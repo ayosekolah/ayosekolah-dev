@@ -1,0 +1,284 @@
+@extends('personal.template_quiz')
+    @section('header')
+        <link rel="stylesheet" href="{!! asset('v1/assets/css/dashforge.dashboard.css') !!}">   
+        <link rel="stylesheet" type="text/css" href=" {{ asset('v1/lib/quiz/jquery.quiz-min.css') }}" />
+        <script src="https://www.wiris.net/demo/plugins/app/WIRISplugins.js?viewer=image"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="{{ asset('v1/lib/animate.css/animate.min.css') }}" rel="stylesheet">
+        <title>Play Quiz | {{env('APP_NAME','Ayo Sekolah') }}</title>
+        <style>
+            span img {
+              height: 70px !important;
+              width: 50px !important;
+            }
+            .Wirisformula{
+                height: 60px;
+            }
+            .disa {
+                border: 1px solid #999999;
+                background-color: #cccccc;
+                color: #666666;
+                pointer-events: none;
+                cursor: default;
+                text-decoration: none;
+                color: black;
+                opacity: 0.65;
+            }
+            .content-fixed {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .middle {
+            width: 100%;
+            text-align: center;
+            }
+            .middle h1 {
+            color: #fff;
+            }
+            .middle input[type="radio"] {
+            display: none;
+            }
+            .middle input[type="radio"]:checked + .box {
+            background-color: #007e90;
+            }
+            .middle input[type="radio"]:checked + .box span {
+            color: white;
+            transform: translateY(70px);
+            }
+            .middle input[type="radio"]:checked + .box span:before {
+            transform: translateY(0px);
+            opacity: 1;
+            }
+            .middle .box {
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            transition: all 250ms ease;
+            will-change: transition;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            font-weight: 900;
+            }
+            .middle .box:active {
+            transform: translateY(10px);
+            }
+            .middle .box span {
+            position: absolute;
+            transform: translate(0, 60px);
+            left: 0;
+            right: 0;
+            transition: all 300ms ease;
+            font-size: 1.5em;
+            user-select: none;
+            /* color: #007e90; */
+            color: white;
+            }
+            .middle .box span:before {
+            font-size: 1.2em;
+            font-family: FontAwesome;
+            display: block;
+            transform: translateY(-80px);
+            opacity: 0;
+            transition: all 300ms ease-in-out;
+            font-weight: normal;
+            color: white;
+            }
+            .middle .front-end span:before {
+            content: "\f121";
+            }
+            .middle .back-end span:before {
+            content: "\f00c";
+            /* Made by */
+            }
+            .middle p {
+            color: #fff;
+            font-family: "Dax", sans-serif;
+            font-weight: 400;
+            }
+            .middle p a {
+            text-decoration: underline;
+            font-weight: bold;
+            color: #fff;
+            }
+            .middle p span:after {
+            /* content: "\f0e7"; */
+            /* color: yellow; */
+            }
+            .page {
+                display: none;
+            }
+            .active {
+                display: inherit;
+            }
+            .quiz {
+                padding: 30px;
+               
+            }
+            .quiz_wrapper{
+                height: 100vh;;
+            }
+
+            @media only screen and (max-width: 600px) {
+            .middle .box {
+            width: 200px;
+            height: 100%;
+            background-color: #fff;
+            transition: all 250ms ease;
+            will-change: transition;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            font-family: "Dax", sans-serif;
+            font-weight: 900;
+            }
+            .middle .box span {
+                position: unset;
+                transform: translate(0, 60px);
+                left: 0;
+                right: 0;
+                transition: all 300ms ease;
+                font-size: 1.5em;
+                user-select: none;
+                color: #007e90;
+            }
+            .middle .back-end span:before {
+                content: ""; 
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 2px solid;
+                border-radius: 10px;
+            }
+            .middle p span:after {
+                content: "\f0e7";
+                color: yellow;
+            }
+            .fixed-bottom {
+               position: unset !important;
+            }
+            .quiz_wrapper{
+                height: auto;
+                overflow: hidden;
+            }
+            body {
+                background:#61173b;
+            }
+            .middle p {
+                padding-top: 10px
+            }
+            }
+
+        </style>
+    @endsection
+    @section('contents')
+    <?php $background_colors = array('#1abc9c', '#3498db', '#9b59b6', '#e67e22', '#e74c3c','#3498db','#f1c40f',
+    '#ff00ff','#7f8c8d','#bada55','#ff80ed','#fa8072','#c39797','#e6e6fa','#fa8072','#f08080','#00ced1'); ?>
+
+        <div class="">
+            <div class="col-md-12">
+                        @include('_partial.alert')
+                        
+            </div>
+            <div class="col-lg-12 col-xl-12 text-white quiz_wrapper" style="background:#61173b;padding:10vh;">
+                @if(isset($_GET['participant_id']))
+                <form action="{{ url('personal/student/quiz/class/answer/get_data_play/?quiz_id='.$quiz->id.'&participant_id='.$_GET['participant_id']) }}" method="POST">
+                @csrf
+                <div class="container quiz">
+                    @foreach ($questions as $index => $item)
+                    <div class="page {{ $index == 0 ?'active' : '' }} " >
+                            <div class="middle">
+                                <h1 class="mb-5 animated fadeInDown tx-80">{!! $item->question !!}</h1>
+                                <input type="hidden" id="question_index" value="{{ $item->id }}" name="question[{{$item->id}}]">
+                                @foreach ($item->quizQuestionAnswer as $index_a => $item_answer)
+                                <label>
+                                        <input type="radio" name="answer[{{$item->id}}]['q']" value="{{$item_answer->id }}" {{ $index_a == 0 ?'checked' : '' }} />
+                                        <div class="back-end box rounded-10 bd"  style="background:{{ $background_colors[array_rand($background_colors)] }}">
+                                            <span >
+                                                @if($item->image )
+                                                    <img src="{{ $item_answer->image }}" alt="">
+                                                @else
+                                                    {!! $item_answer->answer !!}
+                                                @endif
+                                            </span>
+                                        </div>
+                                        </label>
+                                @endforeach
+                                
+                            </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="text-center fixed-bottom pb-5 pt-5 buttom_action bg-black-1">
+                    <a href="{{ url('personal/student/quiz/class/all') }}" class="btn btn-outline-warning tx-30 btn-lg">Cancel</a>
+                    <button  id="prev" href="#" class="btn btn-info btn-lg tx-30">Prev</button>
+                    <a id="next" href="#" class="btn btn-lg btn-success tx-30">Next</a>
+                </div>
+            </div>
+            </form>
+            @else
+            <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <div class="col-12 text-center ">
+                            <h1 class="text-white">{{ $quiz->title }}</h1><br>
+                            <a href="{{ url('personal/student/quiz/class/all') }}" class="btn btn-outline-success btn-lg tx-20">Back to Quiz</a>
+                            <a href={{ url('personal/student/quiz/class/answer/'.Request::segment(6). '?participant_id='.Auth::guard("personal")->user()->id) }} class="tx-20 btn btn-primary btn-lg animated heartBeat">Start Quiz</a>
+                        </div>   
+                    </div>
+            </div>
+            @endif
+        </div>
+    @endsection
+    @section('footer')
+    <script src="{!! asset('v1/lib/quiz/jquery.quiz-min.js') !!}"></script>
+    <script>
+    $("math").attr("mathcolor", "white");
+    $("math").attr("style" ,"height:100px !important");
+    
+
+    function previewQuiz(){
+        var formValues= new Array();
+        $('#question_index').each(function (index) {
+            $(this).val();
+            console.log(formValues[index])
+        });
+        
+    }
+
+
+    $("#prev").on("click", function(e){
+    e.preventDefault()
+    if($(".page.active").index() > 0){
+        $(".page.active").removeClass("active").prev().addClass("active");
+        var index = $(".page.active").index()
+        $(".preview_quiz").remove();
+        $("#next").removeClass("disa");
+        $(".save_quiz").remove()
+        $("#prev").removeClass("disa");
+    }else{
+        $("#prev").addClass("disa");
+    }
+
+    });
+    $("#next").on("click", function(e){
+        if($(".page.active").index() < $(".page").length-1){
+            $(".page.active").removeClass("active").next().addClass("active");
+            $("#prev").removeClass("disa");
+        } else{
+                // $(".buttom_action").append("<a class='preview_quiz btn btn-lg btn-primary tx-30' onclick='previewQuiz()' >Preview</a>&nbsp;")
+                $(".buttom_action").append("<button type='submit' class='save_quiz tx-30 btn btn-lg btn-primary'  >Save</a>")
+                $("#next").addClass("disa");
+        }
+    });
+
+    
+    
+ 
+    </script>
+
+    @endsection
+@show

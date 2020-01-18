@@ -1,0 +1,449 @@
+span#chev .img {
+    height: 90% !important;
+    width: 90% !important;
+}
+
+body {
+    background: #61173b !important;
+}
+
+.mathet p {
+    padding-left: 6px !important;
+    padding-right: 6px;
+}
+
+.img_ans {
+    margin-top: -65px;
+}
+
+.qustion_header {
+    max-height: 300px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.qustion_header::-webkit-scrollbar-track {
+    border: 2px solid rgb(214, 210, 210);
+    padding: 1px 0;
+    background-color: #959494;
+    border-radius: 2px;
+}
+
+.qustion_header::-webkit-scrollbar {
+    width: 5px;
+}
+
+.qustion_header::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(82, 79, 79, 0.3);
+    background-color: #737272;
+    border: 1px solid(75, 74, 74);
+    /* padding: 1px; */
+}
+
+.with_image {
+    padding-bottom: 5px;
+    margin-top: -5px;
+}
+
+.mathet img {
+    margin-top: -75%;
+    position: absolute;
+    margin-left: -15px;
+}
+
+.mathet {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container-fluid {
+    padding-right: 160px !important;
+    padding-left: 160px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.question_title {
+    font-size: 28px !important;
+}
+
+.Wirisformula {
+    height: 60px;
+}
+
+.disa {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black;
+    opacity: 0.65;
+}
+
+.content-fixed {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.middle {
+    width: 100%;
+    text-align: center;
+}
+
+.middle h1 {
+    color: #fff;
+}
+
+.middle input[type="radio"] {
+    display: none;
+}
+
+.middle input[type="radio"]:checked+.box {
+    background-color: #007e90;
+}
+
+.middle input[type="radio"]:checked+.box span {
+    color: white;
+    transform: translateY(70px);
+}
+
+.middle input[type="radio"]:checked+.box span:before {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.add-check .active:before {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* content: "\e013"; */
+}
+
+.middle .box {
+    width: 200px;
+    height: 200px;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    transition: all 250ms ease;
+    will-change: transition;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    font-weight: 900;
+    justify-content: center;
+    word-break: break-all !important;
+    overflow: auto;
+}
+
+.box::-webkit-scrollbar-track {
+    border: 2px solid rgb(214, 210, 210);
+    padding: 1px 0;
+    background-color: #959494;
+    border-radius: 2px;
+}
+
+.box::-webkit-scrollbar {
+    width: 0px;
+}
+
+.mathet::-webkit-scrollbar {
+    width: 0px;
+}
+
+.box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(82, 79, 79, 0.3);
+    background-color: #737272;
+    border: 1px solid(75, 74, 74);
+    padding: 1px;
+}
+
+.middle .box:active {
+    transform: translateY(10px);
+}
+
+.middle .box span {
+    position: absolute;
+    transform: translate(0, 60px);
+    left: 0;
+    right: 0;
+    transition: all 300ms ease;
+    font-size: 1.5em;
+    user-select: none;
+    color: white;
+}
+
+.middle .box span:before {
+    font-size: 1.2em;
+    font-family: FontAwesome;
+    display: block;
+    transform: translateY(-80px);
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+    font-weight: normal;
+    color: white;
+}
+
+.middle .front-end span:before {
+    content: "\f121";
+}
+
+.middle .back-end span:before {
+    content: "\f00c";
+    /* Made by */
+}
+
+.middle p {
+    color: #fff;
+    font-family: "Dax", sans-serif;
+    font-weight: 400;
+}
+
+.middle p a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #fff;
+}
+
+.middle p span:after {
+    /* content: "\f0e7"; */
+    /* color: yellow; */
+}
+
+.page {
+    display: none;
+}
+
+.active {
+    display: inherit;
+}
+
+.quiz {
+    padding: 20px;
+}
+
+.quiz_wrapper {
+    height: 100vh;
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.carousel-indicators {
+    bottom: -90px !important;
+}
+
+.carousel-indicators .active {
+    background-color: #9b59b6;
+}
+
+.carousel-indicators span {
+    background-color: #3498db;
+    height: 50px !important;
+    padding: 7px !important;
+    border-radius: 25px !important;
+    font-size: 14px !important;
+    margin: 0px auto;
+    cursor: pointer;
+}
+
+.carousel-indicators {
+    padding: 5px;
+}
+
+.qz {
+    background: #61173b;
+    padding: 3vh;
+}
+
+@media only screen and (max-width: 600px) {
+    .middle .box {
+        max-width: 340px;
+        width: 330px;
+        height: 100%;
+        background-color: #fff;
+        transition: all 250ms ease;
+        will-change: transition;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        font-weight: 900;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 52px;
+        overflow: auto;
+
+    }
+
+    .middle .box span {
+        position: unset;
+        transform: translate(0, 60px);
+        left: 0;
+        right: 0;
+        transition: all 300ms ease;
+        font-size: 1rem;
+        user-select: none;
+        color: #007e90;
+    }
+
+    .middle .back-end span:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid;
+        border-radius: 10px;
+    }
+
+    .middle p span:after {
+        /* content: "\f0e7"; */
+        /* color: yellow; */
+    }
+
+    .fixed-bottom {
+        position: unset !important;
+    }
+
+    .quiz_wrapper {
+        height: auto;
+        overflow: hidden;
+    }
+
+    .middle p {
+        padding-top: 10px;
+    }
+
+    .question_title {
+        font-size: 14px !important;
+    }
+
+    .buttom_action {
+        margin-top: 100px;
+        padding: 20px;
+    }
+
+    .buttom_action button,
+    .cancel_ques {
+        width: 100%;
+        margin: 4px;
+    }
+
+    .carousel-indicators {
+        /* display: none !important; */
+        position: unset !important;
+    }
+
+    .container-fluid {
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-top: 1px;
+    }
+
+    .img_ans {
+        margin-top: 2px !important;
+        height: 50px;
+        width: 20% !important;
+    }
+
+    .answer_la {
+        margin-top: 3px;
+    }
+
+    .carousel-indicators .active {
+        background-color: #9b59b6;
+    }
+
+    .carousel-indicators span {
+        background-color: #3498db;
+        height: 40px !important;
+        padding: 3px !important;
+        font-size: 12px !important;
+        margin: 0px auto;
+        cursor: pointer;
+    }
+
+    .carousel-indicators {
+        padding: 0;
+        margin: 0;
+        display: flow-root !important;
+        width: 350px !important;
+        overflow: scroll !important;
+        margin: 0px auto !important;
+        /* padding-left: 50px !important; */
+    }
+
+    .qz {
+        background: #61173b;
+        padding: 10vh;
+    }
+
+    .img_title {
+        width: 80%;
+        /* min-width: 200px; */
+        /* max-width: 300px; */
+    }
+
+    .with_image {
+        padding-bottom: 0;
+        margin-top: 0;
+    }
+
+    .mathet img {
+        margin: none !important;
+        position: unset !important;
+    }
+
+    span#chev .img {
+        margin-top: 2px !important;
+        height: 50px;
+        width: 20% !important;
+    }
+
+    .mathet {
+        position: absolute;
+        width: 100%;
+        /* max-height: 70px; */
+    }
+
+    .box::-webkit-scrollbar-track {
+        border: 2px solid rgb(214, 210, 210);
+        padding: 1px 0;
+        background-color: #959494;
+        border-radius: 2px;
+    }
+
+    .box::-webkit-scrollbar {
+        width: 1px;
+    }
+
+    .box::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(82, 79, 79, 0.3);
+        background-color: #737272;
+        border: 1px solid(75, 74, 74);
+        padding: 1px;
+    }
+}
